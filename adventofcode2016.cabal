@@ -15,6 +15,7 @@ cabal-version:       >=1.10
 
 library
   hs-source-dirs:      src
+  other-modules:       Shared.ParserTools
   exposed-modules:     Day1
                      , Day2
                      , Day3
