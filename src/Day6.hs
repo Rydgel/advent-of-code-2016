@@ -3,10 +3,10 @@ module Day6
     , day6'
     ) where
 
-{- Day 6: Signals and Noise -}
-
 import Control.Arrow ((&&&))
 import Data.List (group, sort, transpose)
+
+{- Day 6: Signals and Noise -}
 
 count :: String -> [(Int, Char)]
 count = sort . map (length &&& head) . group . sort
