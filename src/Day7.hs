@@ -11,6 +11,7 @@ import           Data.Either
 import           Data.List
 import qualified Data.Text            as T
 import           Shared.String
+import           Shared.List
 
 {- Day 7: Internet Protocol Version 7 -}
 
@@ -38,7 +39,7 @@ day7 :: IO ()
 day7 = do
   input <- T.lines . T.pack <$> readFile "resources/day7.txt"
   let results = rights $ map (parseOnly parseIP) input
-  print $ length $ filter (True ==) $ (\(sn,hn) -> isAbba sn && not (isAbba hn)) <$> results
+  print $ countF (True ==) $ (\(sn,hn) -> isAbba sn && not (isAbba hn)) <$> results
 
 {- Part Two -}
 
@@ -46,7 +47,7 @@ day7' :: IO ()
 day7' = do
   input <- T.lines . T.pack <$> readFile "resources/day7.txt"
   let results = rights $ map (parseOnly parseIP) input
-  print $ length $ filter (True ==) $ (\(sn,hn) -> (any (checkHn hn) (zipSn sn))) <$> results
+  print $ countF (True ==) $ (\(sn,hn) -> (any (checkHn hn) (zipSn sn))) <$> results
   where
     zipSn = zip3 <*> drop 1 <*> drop 2
     checkHn h (a,b,c) = a == c && a /= b && substring [b, a, b] h

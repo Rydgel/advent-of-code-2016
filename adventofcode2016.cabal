@@ -18,6 +18,7 @@ library
   other-modules:       Shared.ParserTools
                      , Shared.ByteString
                      , Shared.String
+                     , Shared.List
   exposed-modules:     Day1
                      , Day2
                      , Day3
